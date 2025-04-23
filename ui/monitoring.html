@@ -176,6 +176,29 @@
                 <!-- Wind Tab -->
                 <div id="wind-tab" class="tab-content hidden">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Weather Info -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">Conditions Météo</h4>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3 bg-white rounded-lg shadow-sm">
+                                    <div class="text-gray-500 mb-1">Température</div>
+                                    <div class="text-xl font-bold weather-temp">--°C</div>
+                                </div>
+                                <div class="p-3 bg-white rounded-lg shadow-sm">
+                                    <div class="text-gray-500 mb-1">Humidité</div>
+                                    <div class="text-xl font-bold weather-humidity">--%</div>
+                                </div>
+                                <div class="p-3 bg-white rounded-lg shadow-sm">
+                                    <div class="text-gray-500 mb-1">Vent</div>
+                                    <div class="text-xl font-bold weather-wind">-- km/h</div>
+                                </div>
+                                <div class="p-3 bg-white rounded-lg shadow-sm">
+                                    <div class="text-gray-500 mb-1">Conditions</div>
+                                    <div class="text-xl font-bold weather-desc">--</div>
+                                </div>
+                            </div>
+                        </div>
+
                         <!-- Anemometer -->
                         <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
                             <div class="relative">
@@ -290,13 +313,50 @@
                 .addTo(map);
         });
 
-        // Weather data update
+        // Weather data update using OpenWeather API
+        const API_KEY = "972b7987d0148a821a2a4236cd4f70f5";
+        const VILLE = "Casablanca";
+        
         async function updateWeather() {
             try {
-                const response = await fetch('weather_data.json');
+                const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${VILLE}&appid=${API_KEY}&units=metric&lang=fr`);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
                 const data = await response.json();
-                document.querySelector('.weather-temp').textContent = `${data.temperature}°C`;
-                document.querySelector('.weather-wind').textContent = `${data.wind_speed} km/h`;
+                
+                // Update weather display
+                const weatherData = {
+                    temperature: Math.round(data.main.temp),
+                    description: data.weather[0].description,
+                    humidity: data.main.humidity,
+                    wind_speed: Math.round(data.wind.speed * 3.6 * 10) / 10 // Convert m/s to km/h
+                };
+
+                // Update UI elements if they exist
+                const tempElements = document.querySelectorAll('.weather-temp');
+                const windElements = document.querySelectorAll('.weather-wind');
+                const descElements = document.querySelectorAll('.weather-desc');
+                const humidityElements = document.querySelectorAll('.weather-humidity');
+
+                tempElements.forEach(el => el.textContent = `${weatherData.temperature}°C`);
+                windElements.forEach(el => el.textContent = `${weatherData.wind_speed} km/h`);
+                descElements.forEach(el => el.textContent = weatherData.description);
+                humidityElements.forEach(el => el.textContent = `${weatherData.humidity}%`);
+
+                // Update anemometer speed display
+                const anemometerSpeed = document.querySelector('.anemometer + div .text-xl');
+                if (anemometerSpeed) {
+                    anemometerSpeed.textContent = `${weatherData.wind_speed} km/h`;
+                }
+
+                // Adjust anemometer animation speed based on wind speed
+                const anemometer = document.querySelector('.anemometer');
+                if (anemometer) {
+                    const rotationDuration = Math.max(1, 8 - weatherData.wind_speed / 5); // Faster rotation for higher wind speeds
+                    anemometer.style.animationDuration = `${rotationDuration}s`;
+                }
+
             } catch (error) {
                 console.error('Error updating weather:', error);
             }
