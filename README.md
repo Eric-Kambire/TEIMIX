@@ -1,62 +1,74 @@
-# Energy Dashboard Project
+# OPTIMIX - Système de Monitoring Énergétique
 
-## Overview
-This project is a modern energy monitoring dashboard with a Flask backend and a responsive frontend built with Tailwind CSS, Chart.js, and Leaflet.js. It provides real-time energy data, alerts, and chatbot assistance.
+OPTIMIX est une application web de monitoring énergétique qui permet de suivre en temps réel la consommation d'énergie, la production solaire, et d'autres métriques importantes.
 
-## Repository Structure
+## Fonctionnalités
 
-- **/server**  
-  Contains the main Flask server application (`app_server.py`) which serves the API endpoints and static files.
+- Monitoring en temps réel de la production solaire
+- Suivi de la consommation énergétique
+- Alertes et notifications
+- Interface de chat pour l'assistance
+- Mise à jour automatique des données météorologiques
 
-- **/ui**  
-  Contains the frontend HTML files:  
-  - `index.html` (Login page)  
-  - `dashboard.html` (Main dashboard)  
-  - `monitoring.html` (Detailed monitoring with tabs and chatbot)  
-  - `alerts.html` (Alerts page)  
-  - `settings.html` (Settings and configuration)
+## Installation
 
-- **/static**  
-  Contains static assets such as CSS, JS, images, and JSON data (`weather_data.json`).
+1. Cloner le repository
+```bash
+git clone https://github.com/Eric-Kambire/OPTIMIX.git
+cd OPTIMIX
+```
 
-## Running the Server
+2. Installer les dépendances Python
+```bash
+pip install flask requests
+```
 
-1. Navigate to the server directory:  
-   ```bash
-   cd server
-   ```
+## Utilisation
 
-2. Run the Flask server:  
-   ```bash
-   python3 app_server.py
-   ```
+1. Démarrer le serveur Flask
+```bash
+python app.py
+```
 
-3. Access the application in your browser at:  
-   ```
-   http://localhost:8000
-   ```
+2. Accéder à l'application
+- Ouvrir un navigateur web
+- Aller à `http://localhost:8000`
 
-## Features
+## Structure du Projet
 
-- Real-time energy consumption and production monitoring  
-- Interactive charts and maps  
-- Alerts and notifications  
-- User login and guest mode  
-- Chatbot assistant for energy-related queries  
-- Configurable system settings  
+- `app.py` - Application Flask principale
+- `weather_service.py` - Service de mise à jour météo
+- `ui/` - Templates HTML et assets UI
+- `static/` - Fichiers statiques et données
+- `server/` - Composants serveur additionnels
 
-## Notes
+## API
 
-- The server serves the frontend files and API endpoints.  
-- Weather data is updated every 5 minutes in the background.  
-- The chatbot API supports queries in French.  
-- The UI uses Google Fonts and Font Awesome for modern styling.  
-- Images and icons are loaded via CDN for performance.
+L'application expose plusieurs endpoints API :
 
-## Future Enhancements
+- `GET /` - Page de monitoring principale
+- `GET /weather_data.json` - Données météo actuelles
+- `POST /api/chat` - Interface de chat pour l'assistance
 
-- Persist user settings via API  
-- Add authentication and user management  
-- Integrate real sensor data for energy production and consumption  
-- Improve chatbot intelligence and language support
-# OPTIMIX
+## Déploiement
+
+L'application est déployée sur GitHub Pages à l'adresse : https://eric-kambire.github.io/OPTIMIX/
+
+Pour accéder à l'application :
+1. Visiter https://eric-kambire.github.io/OPTIMIX/
+2. Naviguer à travers les différentes sections via le menu de navigation
+3. Consulter les données en temps réel dans le tableau de bord
+
+## Contribution
+
+Les contributions sont les bienvenues ! Pour contribuer :
+
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité
+3. Commiter vos changements
+4. Pousser vers la branche
+5. Ouvrir une Pull Request
+
+## Licence
+
+Ce projet est sous licence MIT.
