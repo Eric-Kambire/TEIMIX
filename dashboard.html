@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Monitoring Énergétique</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Leaflet.js for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .font-opensans {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .gauge-animation {
+            transition: stroke-dashoffset 1s ease-in-out;
+        }
+
+        .battery-fill {
+            animation: batteryFill 2s ease-in-out;
+        }
+
+        @keyframes batteryFill {
+            from { width: 0; }
+            to { width: 70%; }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">ÉnergieMonitor</span>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="dashboard.html" class="text-green-500 flex items-center">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+
+                <!-- Weather Widget -->
+                <div class="flex items-center bg-blue-50 rounded-lg px-4 py-2">
+                    <i class="fas fa-sun text-yellow-500 mr-2"></i>
+                    <span class="text-sm weather-temp">--°C</span>
+                    <span class="mx-2">|</span>
+                    <i class="fas fa-wind text-blue-500 mr-2"></i>
+                    <span class="text-sm weather-wind">-- km/h</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Statistics Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <!-- Power Generation Card -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h3 class="font-montserrat text-lg mb-4">Puissance Générée</h3>
+                <div class="flex items-center justify-center">
+                    <svg class="transform -rotate-90 w-32 h-32">
+                        <circle
+                            cx="64"
+                            cy="64"
+                            r="60"
+                            stroke="#E5E7EB"
+                            stroke-width="8"
+                            fill="none"
+                        />
+                        <circle
+                            cx="64"
+                            cy="64"
+                            r="60"
+                            stroke="#4CAF50"
+                            stroke-width="8"
+                            fill="none"
+                            stroke-dasharray="377"
+                            stroke-dashoffset="113"
+                            class="gauge-animation"
+                        />
+                    </svg>
+                    <div class="ml-4">
+                        <div class="text-2xl font-bold text-gray-800">3.2 kW</div>
+                        <div class="text-sm text-gray-500">/ 5 kW max</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Energy Storage Card -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h3 class="font-montserrat text-lg mb-4">Énergie Stockée</h3>
+                <div class="relative h-8 bg-gray-200 rounded-full overflow-hidden">
+                    <div class="absolute top-0 left-0 h-full bg-blue-500 battery-fill" style="width: 70%"></div>
+                </div>
+                <div class="mt-4 text-center">
+                    <div class="text-2xl font-bold text-gray-800">12h</div>
+                    <div class="text-sm text-gray-500">d'autonomie restante</div>
+                </div>
+            </div>
+
+            <!-- CO2 Savings Card -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h3 class="font-montserrat text-lg mb-4">CO2 Évité</h3>
+                <div class="flex items-center justify-center">
+                    <i class="fas fa-tree text-5xl text-green-500"></i>
+                    <div class="ml-4">
+                        <div class="text-2xl font-bold text-gray-800">50 kg</div>
+                        <div class="text-sm text-gray-500">= 3 arbres plantés</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <div class="flex items-center justify-between mb-6">
+                <h3 class="font-montserrat text-lg">Production en Temps Réel</h3>
+                <div class="flex space-x-2">
+                    <button class="px-4 py-2 text-sm bg-green-500 text-white rounded-md">24h</button>
+                    <button class="px-4 py-2 text-sm bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">7j</button>
+                    <button class="px-4 py-2 text-sm bg-gray-100 text-gray-600 rounded-md hover:bg-gray-200">30j</button>
+                </div>
+            </div>
+            <canvas id="productionChart" height="200"></canvas>
+        </div>
+
+        <!-- Map Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <h3 class="font-montserrat text-lg mb-4">Carte des Installations</h3>
+            <div id="map" class="h-96 rounded-lg"></div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([33.5731, -7.5898], 13); // Casablanca coordinates
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for installations
+        const installations = [
+            { lat: 33.5731, lng: -7.5898, name: "Installation Solaire 1" },
+            { lat: 33.5831, lng: -7.5798, name: "Éolienne 1" },
+            { lat: 33.5631, lng: -7.5998, name: "Batterie 1" }
+        ];
+
+        installations.forEach(inst => {
+            L.marker([inst.lat, inst.lng])
+                .bindPopup(inst.name)
+                .addTo(map);
+        });
+
+        // Weather data update
+        async function updateWeather() {
+            try {
+                const response = await fetch('/weather_data.json');
+                const data = await response.json();
+                document.querySelector('.weather-temp').textContent = `${data.temperature}°C`;
+                document.querySelector('.weather-wind').textContent = `${data.wind_speed} km/h`;
+            } catch (error) {
+                console.error('Error updating weather:', error);
+            }
+        }
+
+        // Update weather initially and every 5 minutes
+        updateWeather();
+        setInterval(updateWeather, 300000);
+
+        // Production Chart
+        const ctx = document.getElementById('productionChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 24}, (_, i) => `${i}h`),
+                datasets: [{
+                    label: 'Solaire',
+                    data: Array.from({length: 24}, () => Math.random() * 4 + 1),
+                    borderColor: '#F59E0B',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    tension: 0.4
+                }, {
+                    label: 'Éolien',
+                    data: Array.from({length: 24}, () => Math.random() * 4 + 1),
+                    borderColor: '#3B82F6',
+                    backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true,
+                interaction: {
+                    intersect: false,
+                    mode: 'index'
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        title: {
+                            display: true,
+                            text: 'kW'
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
