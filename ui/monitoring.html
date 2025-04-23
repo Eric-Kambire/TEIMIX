@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monitoring Détaillé - Dashboard Énergétique</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Leaflet.js for maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <style>
+        #map { 
+            height: 400px; 
+            width: 100%;
+            border-radius: 0.5rem;
+        }
+        
+        .chatbot-container {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 350px;
+            z-index: 1000;
+        }
+        
+        .chat-messages {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .message {
+            margin: 8px;
+            padding: 8px 12px;
+            border-radius: 15px;
+        }
+        
+        .user-message {
+            background: #4CAF50;
+            color: white;
+            margin-left: 20%;
+        }
+        
+        .bot-message {
+            background: #f0f0f0;
+            margin-right: 20%;
+        }
+    </style>
+
+    <style>
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .font-opensans {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .tab-indicator {
+            transition: transform 0.3s ease;
+        }
+
+        .anemometer {
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header (Same as dashboard) -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">ÉnergieMonitor</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-green-500 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Tabs -->
+        <div class="bg-white rounded-lg shadow-sm mb-8">
+            <div class="border-b border-gray-200">
+                <div class="flex relative">
+                    <button class="tab-button active px-6 py-4 text-green-500 font-medium relative" data-tab="solar">
+                        <i class="fas fa-sun mr-2"></i>
+                        Solaire
+                    </button>
+                    <button class="tab-button px-6 py-4 text-gray-500 font-medium relative" data-tab="wind">
+                        <i class="fas fa-wind mr-2"></i>
+                        Éolien
+                    </button>
+                    <button class="tab-button px-6 py-4 text-gray-500 font-medium relative" data-tab="battery">
+                        <i class="fas fa-battery-three-quarters mr-2"></i>
+                        Batteries
+                    </button>
+                    <div class="tab-indicator absolute bottom-0 left-0 h-0.5 bg-green-500 transition-transform duration-300" style="width: 100px;"></div>
+                </div>
+            </div>
+
+            <!-- Tab Contents -->
+            <div class="p-6">
+                <!-- Solar Panel Tab -->
+                <div id="solar-tab" class="tab-content">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Heatmap -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">Rendement des Panneaux</h4>
+                            <div class="grid grid-cols-4 gap-2">
+                                <!-- Simulated heatmap cells -->
+                                <div class="aspect-square bg-green-300 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                                <div class="aspect-square bg-green-500 rounded"></div>
+                                <div class="aspect-square bg-green-600 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                                <div class="aspect-square bg-green-500 rounded"></div>
+                                <div class="aspect-square bg-green-600 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                                <div class="aspect-square bg-green-500 rounded"></div>
+                                <div class="aspect-square bg-green-300 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                                <div class="aspect-square bg-green-500 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                                <div class="aspect-square bg-green-500 rounded"></div>
+                                <div class="aspect-square bg-green-300 rounded"></div>
+                                <div class="aspect-square bg-green-400 rounded"></div>
+                            </div>
+                        </div>
+
+                        <!-- Irradiation vs Temperature -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">Irradiation vs Température</h4>
+                            <canvas id="solarChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wind Tab -->
+                <div id="wind-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Anemometer -->
+                        <div class="bg-gray-50 p-4 rounded-lg flex items-center justify-center">
+                            <div class="relative">
+                                <svg class="anemometer w-48 h-48" viewBox="0 0 100 100">
+                                    <circle cx="50" cy="50" r="45" fill="none" stroke="#4B5563" stroke-width="2"/>
+                                    <line x1="50" y1="50" x2="50" y2="10" stroke="#4B5563" stroke-width="4" stroke-linecap="round"/>
+                                    <line x1="50" y1="50" x2="85" y2="70" stroke="#4B5563" stroke-width="4" stroke-linecap="round"/>
+                                    <line x1="50" y1="50" x2="15" y2="70" stroke="#4B5563" stroke-width="4" stroke-linecap="round"/>
+                                </svg>
+                                <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-xl font-bold">
+                                    12 km/h
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Wind Rose -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">Direction du Vent</h4>
+                            <canvas id="windRoseChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Battery Tab -->
+                <div id="battery-tab" class="tab-content hidden">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Battery Health -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">État de Santé</h4>
+                            <div class="flex items-center justify-center">
+                                <div class="relative w-48 h-48">
+                                    <svg class="transform -rotate-90" viewBox="0 0 100 100">
+                                        <circle cx="50" cy="50" r="45" fill="none" stroke="#E5E7EB" stroke-width="8"/>
+                                        <circle cx="50" cy="50" r="45" fill="none" stroke="#4CAF50" stroke-width="8"
+                                                stroke-dasharray="283" stroke-dashoffset="23"/>
+                                    </svg>
+                                    <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                                        <div class="text-3xl font-bold text-gray-800">92%</div>
+                                        <div class="text-sm text-gray-500">Santé</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Discharge Curve -->
+                        <div class="bg-gray-50 p-4 rounded-lg">
+                            <h4 class="font-montserrat text-lg mb-4">Courbe de Décharge</h4>
+                            <canvas id="batteryChart" height="200"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Export Button -->
+        <div class="flex justify-end mb-8">
+            <button class="flex items-center px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors">
+                <i class="fas fa-download mr-2"></i>
+                Export CSV
+            </button>
+        </div>
+
+        <!-- Map Section -->
+        <div class="bg-white rounded-lg shadow-sm p-6 mb-8">
+            <h3 class="font-montserrat text-lg mb-4">Carte des Installations</h3>
+            <div id="map"></div>
+        </div>
+
+        <!-- Chatbot -->
+        <div class="chatbot-container bg-white rounded-lg shadow-lg">
+            <div class="p-4 border-b">
+                <h3 class="font-montserrat text-lg">Assistant ÉnergieMonitor</h3>
+            </div>
+            <div class="chat-messages p-4" id="chatMessages">
+                <div class="bot-message message">
+                    Bonjour! Je peux vous aider avec vos questions sur la consommation d'énergie, les économies, et la maintenance.
+                </div>
+            </div>
+            <div class="p-4 border-t">
+                <div class="flex">
+                    <input type="text" 
+                           id="chatInput" 
+                           class="flex-1 p-2 border rounded-l focus:outline-none focus:ring-2 focus:ring-green-500" 
+                           placeholder="Posez votre question..."
+                           onkeypress="if(event.key === 'Enter') { sendMessage(); return false; }">
+                    <button onclick="sendMessage()"
+                            class="bg-green-500 text-white px-4 rounded-r hover:bg-green-600">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Initialize map
+        const map = L.map('map').setView([48.8566, 2.3522], 13);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+        }).addTo(map);
+
+        // Add markers for installations
+        const installations = [
+            { lat: 48.8566, lng: 2.3522, name: "Installation Solaire 1" },
+            { lat: 48.8606, lng: 2.3376, name: "Éolienne 1" },
+            { lat: 48.8496, lng: 2.3452, name: "Batterie 1" }
+        ];
+
+        installations.forEach(inst => {
+            L.marker([inst.lat, inst.lng])
+                .bindPopup(inst.name)
+                .addTo(map);
+        });
+
+        // Weather data update
+        async function updateWeather() {
+            try {
+                const response = await fetch('weather_data.json');
+                const data = await response.json();
+                document.querySelector('.weather-temp').textContent = `${data.temperature}°C`;
+                document.querySelector('.weather-wind').textContent = `${data.wind_speed} km/h`;
+            } catch (error) {
+                console.error('Error updating weather:', error);
+            }
+        }
+
+        // Initialize chat
+        function initializeChat() {
+            console.log('Initializing chat functionality...');
+            // Initialize weather updates
+            updateWeather();
+            setInterval(updateWeather, 300000); // Update every 5 minutes
+            console.log('Chat initialization complete');
+        }
+
+        // Handle chat message sending
+        async function sendMessage() {
+            console.group('Sending chat message');
+            const chatInput = document.getElementById('chatInput');
+            const chatMessages = document.getElementById('chatMessages');
+            
+            if (!chatInput || !chatMessages) {
+                console.error('Chat elements not found');
+                console.groupEnd();
+                return;
+            }
+
+            const message = chatInput.value.trim();
+            console.log('Message:', message);
+
+            if (!message) {
+                console.log('Empty message, ignoring');
+                console.groupEnd();
+                return;
+            }
+
+            try {
+                // Add user message
+                console.log('Adding user message to chat');
+                chatMessages.innerHTML += `
+                    <div class="user-message message">${message}</div>
+                `;
+
+                // Clear input
+                chatInput.value = '';
+
+                // Make API request
+                console.log('Making API request with message:', message);
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ message })
+                });
+                console.log('Response received:', response.status);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                console.log('Received response:', data);
+
+                // Add bot response
+                chatMessages.innerHTML += `
+                    <div class="bot-message message">${data.response}</div>
+                `;
+
+                // Scroll to bottom
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            } catch (error) {
+                console.error('Error in chat request:', error);
+                chatMessages.innerHTML += `
+                    <div class="bot-message message" style="color: red;">
+                        Désolé, une erreur s'est produite. Veuillez réessayer.
+                    </div>
+                `;
+            } finally {
+                console.groupEnd();
+            }
+        }
+
+        // Initialize when DOM is ready
+        if (document.readyState === 'loading') {
+            console.log('Document still loading, adding DOMContentLoaded listener...');
+            document.addEventListener('DOMContentLoaded', initializeChat);
+        } else {
+            console.log('Document already loaded, initializing immediately...');
+            initializeChat();
+        }
+
+        // Tab Switching
+        const tabs = document.querySelectorAll('.tab-button');
+        const contents = document.querySelectorAll('.tab-content');
+        const indicator = document.querySelector('.tab-indicator');
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                // Update tabs
+                tabs.forEach(t => {
+                    t.classList.remove('text-green-500');
+                    t.classList.add('text-gray-500');
+                });
+                tab.classList.remove('text-gray-500');
+                tab.classList.add('text-green-500');
+
+                // Move indicator
+                indicator.style.transform = `translateX(${index * 100}%)`;
+
+                // Show content
+                contents.forEach(c => c.classList.add('hidden'));
+                document.getElementById(`${tab.dataset.tab}-tab`).classList.remove('hidden');
+            });
+        });
+
+        // Initialize Charts
+        // Solar Chart
+        const solarCtx = document.getElementById('solarChart').getContext('2d');
+        new Chart(solarCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 24}, (_, i) => `${i}h`),
+                datasets: [{
+                    label: 'Irradiation (W/m²)',
+                    data: Array.from({length: 24}, () => Math.random() * 1000),
+                    borderColor: '#F59E0B',
+                    yAxisID: 'y'
+                }, {
+                    label: 'Température (°C)',
+                    data: Array.from({length: 24}, () => Math.random() * 30 + 10),
+                    borderColor: '#EF4444',
+                    yAxisID: 'y1'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        type: 'linear',
+                        position: 'left',
+                    },
+                    y1: {
+                        type: 'linear',
+                        position: 'right',
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                }
+            }
+        });
+
+        // Wind Rose Chart
+        const windRoseCtx = document.getElementById('windRoseChart').getContext('2d');
+        new Chart(windRoseCtx, {
+            type: 'radar',
+            data: {
+                labels: ['N', 'NE', 'E', 'SE', 'S', 'SO', 'O', 'NO'],
+                datasets: [{
+                    label: 'Vitesse du vent',
+                    data: Array.from({length: 8}, () => Math.random() * 20),
+                    backgroundColor: 'rgba(59, 130, 246, 0.2)',
+                    borderColor: '#3B82F6',
+                    pointBackgroundColor: '#3B82F6'
+                }]
+            },
+            options: {
+                scales: {
+                    r: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Battery Chart
+        const batteryCtx = document.getElementById('batteryChart').getContext('2d');
+        new Chart(batteryCtx, {
+            type: 'line',
+            data: {
+                labels: Array.from({length: 24}, (_, i) => `${i}h`),
+                datasets: [{
+                    label: 'Niveau de charge',
+                    data: Array.from({length: 24}, (_, i) => 100 - (i * 2 + Math.random() * 2)),
+                    borderColor: '#4CAF50',
+                    fill: true,
+                    backgroundColor: 'rgba(76, 175, 80, 0.1)'
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

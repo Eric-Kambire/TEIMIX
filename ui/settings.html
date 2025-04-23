@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paramètres - Dashboard Énergétique</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <style>
+        .font-montserrat {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .font-opensans {
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        /* Custom Toggle Switch */
+        .toggle-switch {
+            width: 3.5rem;
+            height: 2rem;
+        }
+
+        .toggle-switch input:checked ~ .toggle-dot {
+            transform: translateX(100%);
+        }
+
+        /* Tooltip */
+        .tooltip {
+            visibility: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .has-tooltip:hover .tooltip {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        /* Slider */
+        .custom-range {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 0.5rem;
+            border-radius: 0.25rem;
+            background: #E5E7EB;
+            outline: none;
+        }
+
+        .custom-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 1.5rem;
+            height: 1.5rem;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .custom-range::-webkit-slider-thumb:hover {
+            background: #45a049;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">ÉnergieMonitor</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-8">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-green-500 flex items-center">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <!-- Configuration Section -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="font-montserrat text-2xl text-gray-800 mb-6">Configuration</h2>
+
+                <!-- Threshold Settings -->
+                <div class="space-y-6">
+                    <!-- Wind Speed Threshold -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Seuil de basculement solaire/éolien
+                        </label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" 
+                                   class="custom-range"
+                                   min="0" 
+                                   max="20" 
+                                   value="5">
+                            <span class="text-sm text-gray-600">5 km/h</span>
+                        </div>
+                    </div>
+
+                    <!-- Battery Temperature -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Température maximale batterie
+                        </label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" 
+                                   class="custom-range"
+                                   min="30" 
+                                   max="60" 
+                                   value="45">
+                            <span class="text-sm text-gray-600">45°C</span>
+                        </div>
+                    </div>
+
+                    <!-- Minimum Battery Level -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-2">
+                            Niveau minimum batterie
+                        </label>
+                        <div class="flex items-center space-x-4">
+                            <input type="range" 
+                                   class="custom-range"
+                                   min="0" 
+                                   max="100" 
+                                   value="20">
+                            <span class="text-sm text-gray-600">20%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- API Configuration -->
+                <div class="mt-8">
+                    <h3 class="font-montserrat text-lg text-gray-800 mb-4">Configuration API</h3>
+                    <div class="relative">
+                        <input type="password" 
+                               class="block w-full pr-10 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                               placeholder="Clé API"
+                               value="sk_test_1234567890">
+                        <button class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                            <i class="fas fa-eye text-gray-400 hover:text-gray-500"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Manual Control Section -->
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <h2 class="font-montserrat text-2xl text-gray-800 mb-6">Contrôle Manuel</h2>
+
+                <div class="space-y-6">
+                    <!-- Force Solar -->
+                    <div class="flex items-center justify-between">
+                        <div class="has-tooltip">
+                            <span class="font-medium">Forcer mode solaire</span>
+                            <div class="tooltip absolute mt-1 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg">
+                                Force l'utilisation de l'énergie solaire pendant 1h
+                            </div>
+                        </div>
+                        <label class="toggle-switch relative inline-block">
+                            <input type="checkbox" class="sr-only">
+                            <div class="w-full h-full bg-gray-200 rounded-full shadow-inner"></div>
+                            <div class="toggle-dot absolute left-0 top-0 bg-white w-1/2 h-full rounded-full shadow transition-transform duration-300 ease-in-out"></div>
+                        </label>
+                    </div>
+
+                    <!-- Force Wind -->
+                    <div class="flex items-center justify-between">
+                        <div class="has-tooltip">
+                            <span class="font-medium">Forcer mode éolien</span>
+                            <div class="tooltip absolute mt-1 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg">
+                                Force l'utilisation de l'énergie éolienne pendant 1h
+                            </div>
+                        </div>
+                        <label class="toggle-switch relative inline-block">
+                            <input type="checkbox" class="sr-only">
+                            <div class="w-full h-full bg-gray-200 rounded-full shadow-inner"></div>
+                            <div class="toggle-dot absolute left-0 top-0 bg-white w-1/2 h-full rounded-full shadow transition-transform duration-300 ease-in-out"></div>
+                        </label>
+                    </div>
+
+                    <!-- Battery Charge Limit -->
+                    <div class="flex items-center justify-between">
+                        <div class="has-tooltip">
+                            <span class="font-medium">Limiter charge batterie</span>
+                            <div class="tooltip absolute mt-1 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg">
+                                Limite la charge maximale à 80% pour prolonger la durée de vie
+                            </div>
+                        </div>
+                        <label class="toggle-switch relative inline-block">
+                            <input type="checkbox" class="sr-only" checked>
+                            <div class="w-full h-full bg-gray-200 rounded-full shadow-inner"></div>
+                            <div class="toggle-dot absolute left-0 top-0 bg-white w-1/2 h-full rounded-full shadow transition-transform duration-300 ease-in-out"></div>
+                        </label>
+                    </div>
+
+                    <!-- Maintenance Mode -->
+                    <div class="flex items-center justify-between">
+                        <div class="has-tooltip">
+                            <span class="font-medium">Mode maintenance</span>
+                            <div class="tooltip absolute mt-1 px-3 py-2 bg-gray-800 text-white text-sm rounded shadow-lg">
+                                Désactive toutes les sources d'énergie pour la maintenance
+                            </div>
+                        </div>
+                        <label class="toggle-switch relative inline-block">
+                            <input type="checkbox" class="sr-only">
+                            <div class="w-full h-full bg-gray-200 rounded-full shadow-inner"></div>
+                            <div class="toggle-dot absolute left-0 top-0 bg-white w-1/2 h-full rounded-full shadow transition-transform duration-300 ease-in-out"></div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Save Changes Button -->
+                <div class="mt-8">
+                    <button class="w-full bg-green-500 text-white py-2 px-4 rounded-md hover:bg-green-600 transition-colors">
+                        Sauvegarder les modifications
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Toggle Password Visibility
+        const togglePassword = document.querySelector('.fa-eye');
+        const apiKeyInput = document.querySelector('input[type="password"]');
+
+        togglePassword.addEventListener('click', () => {
+            if (apiKeyInput.type === 'password') {
+                apiKeyInput.type = 'text';
+                togglePassword.classList.remove('fa-eye');
+                togglePassword.classList.add('fa-eye-slash');
+            } else {
+                apiKeyInput.type = 'password';
+                togglePassword.classList.remove('fa-eye-slash');
+                togglePassword.classList.add('fa-eye');
+            }
+        });
+
+        // Range Input Value Update
+        document.querySelectorAll('input[type="range"]').forEach(range => {
+            range.addEventListener('input', (e) => {
+                const value = e.target.value;
+                const unit = e.target.nextElementSibling.textContent.replace(/[0-9.]/g, '');
+                e.target.nextElementSibling.textContent = `${value}${unit}`;
+            });
+        });
+
+        // Toggle Switches
+        document.querySelectorAll('.toggle-switch input').forEach(toggle => {
+            toggle.addEventListener('change', (e) => {
+                const dot = e.target.parentElement.querySelector('.toggle-dot');
+                if (e.target.checked) {
+                    dot.style.transform = 'translateX(100%)';
+                    e.target.parentElement.querySelector('div').classList.add('bg-green-500');
+                } else {
+                    dot.style.transform = 'translateX(0)';
+                    e.target.parentElement.querySelector('div').classList.remove('bg-green-500');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
