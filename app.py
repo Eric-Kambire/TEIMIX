@@ -10,7 +10,7 @@ app = Flask(__name__)
 # Serve UI files
 @app.route('/')
 def root():
-    return send_from_directory('ui', 'monitoring.html')
+    return send_from_directory('ui', 'index.html')
 
 @app.route('/<path:path>')
 def serve_ui(path):

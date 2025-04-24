@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - Dashboard Énergétique</title>
+    <title>TEIMIX - Système de Suivi Intelligent de Consommation Énergétique</title>
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -15,7 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
     <style>
-        /* Custom Styles */
         .gradient-bg {
             background: linear-gradient(135deg, #2E86AB 0%, #4CAF50 100%);
         }
@@ -32,37 +31,112 @@
         }
         
         @keyframes pulse {
-            0%, 100% {
-                opacity: 1;
-            }
-            50% {
-                opacity: .8;
-            }
+            0%, 100% { opacity: 1; }
+            50% { opacity: .8; }
         }
         
-        /* Typography */
-        .font-montserrat {
-            font-family: 'Montserrat', sans-serif;
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+
+        .feature-card {
+            transition: transform 0.3s ease;
         }
-        
-        .font-opensans {
-            font-family: 'Open Sans', sans-serif;
+
+        .feature-card:hover {
+            transform: translateY(-5px);
         }
     </style>
 </head>
 <body class="gradient-bg wave-bg min-h-screen font-opensans">
-    <div class="container mx-auto px-4 h-screen flex items-center justify-center">
-        <div class="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md">
-            <!-- Logo -->
-            <div class="text-center mb-8">
-                <div class="inline-block p-4 rounded-full bg-green-50">
-                    <i class="fas fa-solar-panel text-4xl text-green-500 mr-2"></i>
-                    <i class="fas fa-wind text-4xl text-blue-500"></i>
+    <div class="container mx-auto px-4 py-8">
+        <!-- Logo and Title -->
+        <div class="text-center mb-12">
+            <div class="inline-block p-4 rounded-full bg-white bg-opacity-10 mb-4">
+                <i class="fas fa-solar-panel text-4xl text-white mr-2"></i>
+                <i class="fas fa-wind text-4xl text-white"></i>
+            </div>
+            <h1 class="font-montserrat text-4xl text-white mb-4">TEIMIX</h1>
+            <p class="text-xl text-white text-opacity-90">Système de Suivi Intelligent de Consommation Énergétique</p>
+        </div>
+
+        <!-- Feature Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Monitoring Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-green-500 text-3xl mb-4">
+                    <i class="fas fa-chart-line"></i>
                 </div>
-                <h1 class="font-montserrat text-2xl mt-4 text-gray-800">Dashboard Énergétique</h1>
+                <h3 class="font-montserrat text-xl mb-2">Monitoring Avancé</h3>
+                <p class="text-gray-600 mb-4">Suivez votre consommation énergétique en temps réel avec des analyses détaillées.</p>
+                <a href="monitoring.html" class="text-green-500 hover:text-green-600">
+                    Découvrir <i class="fas fa-arrow-right ml-2"></i>
+                </a>
             </div>
 
-            <!-- Login Form -->
+            <!-- Human Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-blue-500 text-3xl mb-4">
+                    <i class="fas fa-users"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">HUMAN</h3>
+                <p class="text-gray-600 mb-4">Rejoignez une communauté engagée pour un avenir plus durable.</p>
+                <a href="human.html" class="text-blue-500 hover:text-blue-600">
+                    Explorer <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Crowdfunding Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-purple-500 text-3xl mb-4">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">PANIER</h3>
+                <p class="text-gray-600 mb-4">Soutenez des projets verts locaux et suivez leur impact en temps réel.</p>
+                <a href="crowdfunding.html" class="text-purple-500 hover:text-purple-600">
+                    Participer <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Education Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-yellow-500 text-3xl mb-4">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">ÉDUCATION</h3>
+                <p class="text-gray-600 mb-4">Apprenez et testez vos connaissances sur l'environnement.</p>
+                <a href="education.html" class="text-yellow-500 hover:text-yellow-600">
+                    Apprendre <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Leaderboard Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-red-500 text-3xl mb-4">
+                    <i class="fas fa-trophy"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">CLASSEMENT</h3>
+                <p class="text-gray-600 mb-4">Comparez vos performances et gagnez des récompenses écologiques.</p>
+                <a href="leaderboard.html" class="text-red-500 hover:text-red-600">
+                    Compétition <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Settings Card -->
+            <div class="feature-card bg-white rounded-lg shadow-lg p-6">
+                <div class="text-gray-500 text-3xl mb-4">
+                    <i class="fas fa-cog"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">Paramètres</h3>
+                <p class="text-gray-600 mb-4">Personnalisez votre expérience et gérez vos préférences.</p>
+                <a href="settings.html" class="text-gray-500 hover:text-gray-600">
+                    Configurer <i class="fas fa-arrow-right ml-2"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Login Form -->
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
+            <h2 class="font-montserrat text-2xl mb-6 text-center">Connexion</h2>
             <form class="space-y-6">
                 <!-- Email Field -->
                 <div class="relative">
@@ -131,28 +205,14 @@
         // Form submission
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            // Store form data
             const email = document.querySelector('input[type="email"]').value;
             const password = document.querySelector('input[type="password"]').value;
             
-            // For demo purposes, accept any input
+            // Store form data
             localStorage.setItem('userEmail', email);
             
-            // Try to fetch dashboard first to ensure it exists
-            fetch('dashboard.html')
-                .then(response => {
-                    if (response.ok) {
-                        window.location.href = 'dashboard.html';
-                    } else {
-                        // If dashboard not found, go to monitoring page
-                        window.location.href = 'monitoring.html';
-                    }
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                    // Fallback to monitoring page
-                    window.location.href = 'monitoring.html';
-                });
+            // Redirect to monitoring page
+            window.location.href = 'monitoring.html';
         });
     </script>
 </body>

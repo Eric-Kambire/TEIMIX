@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HUMAN - TEIMIX</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">TEIMIX</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-6">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="human.html" class="text-green-500 flex items-center px-3 py-2 rounded-lg bg-green-50">
+                        <i class="fas fa-users mr-2"></i>
+                        HUMAN
+                    </a>
+                    <a href="crowdfunding.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-hand-holding-heart mr-2"></i>
+                        PANIER
+                    </a>
+                    <a href="education.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        ÉDUCATION
+                    </a>
+                    <a href="leaderboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-trophy mr-2"></i>
+                        CLASSEMENT
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-montserrat text-gray-800 mb-4">Pour une prise de conscience collective</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Ensemble, nous pouvons faire la différence. Découvrez comment votre impact individuel contribue au changement global.</p>
+        </div>
+
+        <!-- Testimonials Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-montserrat text-gray-800 mb-6">Témoignages inspirants</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Testimonial 1 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-leaf text-green-500 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold">Sarah M.</h3>
+                            <p class="text-sm text-gray-500">Éco-citoyenne engagée</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"Grâce à TEIMIX, j'ai réduit ma consommation énergétique de 30% en six mois. C'est incroyable de voir l'impact que de petits changements peuvent avoir!"</p>
+                </div>
+
+                <!-- Testimonial 2 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-building text-blue-500 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold">Marc D.</h3>
+                            <p class="text-sm text-gray-500">Gestionnaire d'immeuble</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"La plateforme nous a permis d'optimiser la consommation de notre immeuble et de sensibiliser tous les résidents aux enjeux énergétiques."</p>
+                </div>
+
+                <!-- Testimonial 3 -->
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
+                            <i class="fas fa-lightbulb text-yellow-500 text-xl"></i>
+                        </div>
+                        <div class="ml-4">
+                            <h3 class="font-semibold">Julie L.</h3>
+                            <p class="text-sm text-gray-500">Enseignante</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-600">"J'utilise TEIMIX comme outil pédagogique pour sensibiliser mes élèves aux enjeux climatiques. Les résultats sont impressionnants!"</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Climate Facts Section -->
+        <section class="mb-12 bg-white rounded-lg shadow-sm p-8">
+            <h2 class="text-2xl font-montserrat text-gray-800 mb-6">Faits sur la crise climatique</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-red-500 mb-2">+1.1°C</div>
+                    <p class="text-gray-600">Augmentation de la température mondiale depuis l'ère préindustrielle</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-500 mb-2">70%</div>
+                    <p class="text-gray-600">Des émissions de CO2 proviennent des zones urbaines</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-green-500 mb-2">-50%</div>
+                    <p class="text-gray-600">Objectif de réduction des émissions d'ici 2030</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2">8 ans</div>
+                    <p class="text-gray-600">Pour agir avant un point de non-retour climatique</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Daily Actions Section -->
+        <section class="mb-12">
+            <h2 class="text-2xl font-montserrat text-gray-800 mb-6">Actions quotidiennes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-plug text-green-500 text-2xl mr-4"></i>
+                        <h3 class="font-semibold">Économies d'énergie</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Éteindre les appareils en veille
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Utiliser des LED
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-green-500 mr-2"></i>
+                            Régler le chauffage intelligemment
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-recycle text-blue-500 text-2xl mr-4"></i>
+                        <h3 class="font-semibold">Réduction des déchets</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            Trier ses déchets
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            Composter
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-blue-500 mr-2"></i>
+                            Éviter le plastique à usage unique
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm p-6">
+                    <div class="flex items-center mb-4">
+                        <i class="fas fa-bicycle text-yellow-500 text-2xl mr-4"></i>
+                        <h3 class="font-semibold">Mobilité durable</h3>
+                    </div>
+                    <ul class="space-y-2 text-gray-600">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-500 mr-2"></i>
+                            Privilégier les transports en commun
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-500 mr-2"></i>
+                            Utiliser le vélo pour les courts trajets
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-yellow-500 mr-2"></i>
+                            Pratiquer le covoiturage
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Personal Impact Calculator -->
+        <section class="bg-white rounded-lg shadow-sm p-8">
+            <h2 class="text-2xl font-montserrat text-gray-800 mb-6">Calculateur d'impact personnel</h2>
+            <div class="max-w-2xl mx-auto">
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Consommation électrique mensuelle (kWh)</label>
+                    <input type="number" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-500 focus:border-green-500" id="electricity">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Distance parcourue en voiture par mois (km)</label>
+                    <input type="number" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-500 focus:border-green-500" id="car">
+                </div>
+                <div class="mb-6">
+                    <label class="block text-gray-700 mb-2">Nombre de vols long-courrier par an</label>
+                    <input type="number" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-500 focus:border-green-500" id="flights">
+                </div>
+                <button onclick="calculateImpact()" class="w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition-colors">
+                    Calculer mon impact
+                </button>
+                <div id="impact-result" class="mt-6 p-4 bg-gray-50 rounded hidden">
+                    <h3 class="font-semibold mb-2">Votre empreinte carbone annuelle</h3>
+                    <div class="text-3xl font-bold text-green-500" id="carbon-footprint">-- tonnes CO2</div>
+                    <p class="mt-2 text-gray-600" id="impact-comparison"></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        function calculateImpact() {
+            const electricity = parseFloat(document.getElementById('electricity').value) || 0;
+            const car = parseFloat(document.getElementById('car').value) || 0;
+            const flights = parseFloat(document.getElementById('flights').value) || 0;
+
+            // Simplified calculation (for demonstration)
+            const carbonFootprint = (
+                (electricity * 0.5 * 12) + // kWh to CO2 (yearly)
+                (car * 0.2 * 12) + // km to CO2 (yearly)
+                (flights * 1.5) // flights impact
+            ) / 1000; // Convert to tonnes
+
+            const resultDiv = document.getElementById('impact-result');
+            const footprintDiv = document.getElementById('carbon-footprint');
+            const comparisonDiv = document.getElementById('impact-comparison');
+
+            footprintDiv.textContent = carbonFootprint.toFixed(1) + ' tonnes CO2';
+            
+            // Compare to average
+            const average = 11.2; // Average carbon footprint in tonnes
+            const percentage = ((carbonFootprint - average) / average * 100).toFixed(0);
+            
+            if (carbonFootprint < average) {
+                comparisonDiv.textContent = `Votre empreinte est ${Math.abs(percentage)}% plus basse que la moyenne nationale. Continuez ainsi !`;
+                comparisonDiv.className = 'mt-2 text-green-600';
+            } else {
+                comparisonDiv.textContent = `Votre empreinte est ${percentage}% plus élevée que la moyenne nationale. Il y a de la marge pour l'amélioration.`;
+                comparisonDiv.className = 'mt-2 text-red-600';
+            }
+
+            resultDiv.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

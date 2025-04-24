@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLASSEMENT - TEIMIX</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        
+        .rank-card {
+            transition: transform 0.2s ease;
+        }
+        
+        .rank-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .medal-1 { color: #FFD700; }
+        .medal-2 { color: #C0C0C0; }
+        .medal-3 { color: #CD7F32; }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">TEIMIX</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-6">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="human.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-users mr-2"></i>
+                        HUMAN
+                    </a>
+                    <a href="crowdfunding.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-hand-holding-heart mr-2"></i>
+                        PANIER
+                    </a>
+                    <a href="education.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        ÉDUCATION
+                    </a>
+                    <a href="leaderboard.html" class="text-green-500 flex items-center px-3 py-2 rounded-lg bg-green-50">
+                        <i class="fas fa-trophy mr-2"></i>
+                        CLASSEMENT
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-montserrat text-gray-800 mb-4">Classement Écologique</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Découvrez les champions de l'écologie et rejoignez la compétition pour un avenir plus vert.</p>
+        </div>
+
+        <!-- Top 3 Podium -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            <!-- 2nd Place -->
+            <div class="rank-card bg-white rounded-lg shadow-sm p-6 text-center md:mt-8">
+                <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-medal text-4xl medal-2"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">Marie L.</h3>
+                <p class="text-gray-500 mb-4">850 points</p>
+                <div class="flex justify-center space-x-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Quiz: 300</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">Actions: 550</span>
+                </div>
+            </div>
+
+            <!-- 1st Place -->
+            <div class="rank-card bg-white rounded-lg shadow-sm p-6 text-center transform md:-translate-y-8">
+                <div class="w-24 h-24 mx-auto mb-4 bg-yellow-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-crown text-5xl medal-1"></i>
+                </div>
+                <h3 class="font-montserrat text-2xl mb-2">Thomas R.</h3>
+                <p class="text-gray-500 mb-4">1250 points</p>
+                <div class="flex justify-center space-x-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Quiz: 450</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">Actions: 800</span>
+                </div>
+            </div>
+
+            <!-- 3rd Place -->
+            <div class="rank-card bg-white rounded-lg shadow-sm p-6 text-center md:mt-8">
+                <div class="w-20 h-20 mx-auto mb-4 bg-gray-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-medal text-4xl medal-3"></i>
+                </div>
+                <h3 class="font-montserrat text-xl mb-2">Sophie M.</h3>
+                <p class="text-gray-500 mb-4">720 points</p>
+                <div class="flex justify-center space-x-2">
+                    <span class="px-2 py-1 bg-blue-100 text-blue-600 rounded-full text-sm">Quiz: 270</span>
+                    <span class="px-2 py-1 bg-green-100 text-green-600 rounded-full text-sm">Actions: 450</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ranking Table -->
+        <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+            <div class="p-6 border-b">
+                <h2 class="text-2xl font-montserrat text-gray-800">Classement général</h2>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="w-full">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Rang</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Utilisateur</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Points Quiz</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Points Actions</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total</th>
+                            <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Badges</th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200">
+                        <tr>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">4</td>
+                            <td class="px-6 py-4 whitespace-nowrap">
+                                <div class="flex items-center">
+                                    <div class="h-10 w-10 rounded-full bg-green-100 flex items-center justify-center">
+                                        <i class="fas fa-user text-green-500"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <div class="text-sm font-medium text-gray-900">Lucas P.</div>
+                                        <div class="text-sm text-gray-500">Éco-warrior</div>
+                                    </div>
+                                </div>
+                            </td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">250</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">400</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-900 font-medium">650</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                <div class="flex space-x-2">
+                                    <i class="fas fa-seedling text-green-500" title="Jardinier"></i>
+                                    <i class="fas fa-solar-panel text-yellow-500" title="Expert Solaire"></i>
+                                </div>
+                            </td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Achievement Categories -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-graduation-cap text-blue-500 text-2xl mr-4"></i>
+                    <h3 class="font-montserrat text-lg">Quiz Master</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Gagnez des points en répondant correctement aux quiz quotidiens sur l'environnement.</p>
+                <div class="text-sm text-gray-500">
+                    Prochain palier : 500 points
+                </div>
+                <div class="mt-2 h-2 bg-gray-200 rounded-full">
+                    <div class="h-2 bg-blue-500 rounded-full" style="width: 60%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-hand-holding-heart text-green-500 text-2xl mr-4"></i>
+                    <h3 class="font-montserrat text-lg">Éco-Actions</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Accumulez des points en participant à des projets écologiques et en réduisant votre impact.</p>
+                <div class="text-sm text-gray-500">
+                    Prochain palier : 1000 points
+                </div>
+                <div class="mt-2 h-2 bg-gray-200 rounded-full">
+                    <div class="h-2 bg-green-500 rounded-full" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-6">
+                <div class="flex items-center mb-4">
+                    <i class="fas fa-users text-purple-500 text-2xl mr-4"></i>
+                    <h3 class="font-montserrat text-lg">Influence Positive</h3>
+                </div>
+                <p class="text-gray-600 mb-4">Inspirez d'autres utilisateurs et partagez vos succès écologiques.</p>
+                <div class="text-sm text-gray-500">
+                    Prochain palier : 300 points
+                </div>
+                <div class="mt-2 h-2 bg-gray-200 rounded-full">
+                    <div class="h-2 bg-purple-500 rounded-full" style="width: 45%"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Add any interactive features here
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize tooltips or other features
+        });
+    </script>
+</body>
+</html>

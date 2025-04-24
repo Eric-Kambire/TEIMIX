@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PANIER / CROWDFUNDING - TEIMIX</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        
+        .project-card:hover .project-image {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .progress-bar {
+            transition: width 1s ease-in-out;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">TEIMIX</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-6">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="human.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-users mr-2"></i>
+                        HUMAN
+                    </a>
+                    <a href="crowdfunding.html" class="text-green-500 flex items-center px-3 py-2 rounded-lg bg-green-50">
+                        <i class="fas fa-hand-holding-heart mr-2"></i>
+                        PANIER
+                    </a>
+                    <a href="education.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        ÉDUCATION
+                    </a>
+                    <a href="leaderboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-trophy mr-2"></i>
+                        CLASSEMENT
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Hero Section -->
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-montserrat text-gray-800 mb-4">Financer le changement</h1>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">Soutenez des projets verts locaux et suivez leur impact en temps réel. Ensemble, construisons un avenir plus durable.</p>
+        </div>
+
+        <!-- Project Filters -->
+        <div class="flex flex-wrap gap-4 mb-8">
+            <button class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors">
+                Tous les projets
+            </button>
+            <button class="bg-white text-gray-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                Énergie solaire
+            </button>
+            <button class="bg-white text-gray-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                Éolien
+            </button>
+            <button class="bg-white text-gray-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                Jardins partagés
+            </button>
+            <button class="bg-white text-gray-600 px-4 py-2 rounded-lg hover:bg-green-50 transition-colors">
+                Biodiversité
+            </button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Project Card 1 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden project-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.pexels.com/photos/356036/pexels-photo-356036.jpeg" 
+                         alt="Projet solaire" 
+                         class="w-full h-48 object-cover project-image">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">
+                        Énergie solaire
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Panneaux solaires communautaires</h3>
+                    <p class="text-gray-600 mb-4">Installation de panneaux solaires sur le toit de l'école primaire du quartier.</p>
+                    
+                    <!-- Progress -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-600">Progression</span>
+                            <span class="text-green-500 font-semibold">75%</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-green-500 rounded-full progress-bar" style="width: 75%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-gray-800">15k€</div>
+                            <div class="text-sm text-gray-500">Objectif</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-green-500">11.2k€</div>
+                            <div class="text-sm text-gray-500">Collectés</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-500">127</div>
+                            <div class="text-sm text-gray-500">Donateurs</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showContributionModal(1)" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors">
+                        Contribuer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Card 2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden project-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.pexels.com/photos/2990644/pexels-photo-2990644.jpeg" 
+                         alt="Jardin partagé" 
+                         class="w-full h-48 object-cover project-image">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">
+                        Jardins partagés
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Jardin partagé du quartier</h3>
+                    <p class="text-gray-600 mb-4">Création d'un jardin communautaire avec espace pédagogique.</p>
+                    
+                    <!-- Progress -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-600">Progression</span>
+                            <span class="text-green-500 font-semibold">45%</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-green-500 rounded-full progress-bar" style="width: 45%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-gray-800">8k€</div>
+                            <div class="text-sm text-gray-500">Objectif</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-green-500">3.6k€</div>
+                            <div class="text-sm text-gray-500">Collectés</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-500">84</div>
+                            <div class="text-sm text-gray-500">Donateurs</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showContributionModal(2)" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors">
+                        Contribuer
+                    </button>
+                </div>
+            </div>
+
+            <!-- Project Card 3 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden project-card">
+                <div class="relative overflow-hidden">
+                    <img src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg" 
+                         alt="Éolienne" 
+                         class="w-full h-48 object-cover project-image">
+                    <div class="absolute top-4 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm">
+                        Éolien
+                    </div>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Éolienne communautaire</h3>
+                    <p class="text-gray-600 mb-4">Installation d'une éolienne pour alimenter 200 foyers en électricité verte.</p>
+                    
+                    <!-- Progress -->
+                    <div class="mb-4">
+                        <div class="flex justify-between text-sm mb-1">
+                            <span class="text-gray-600">Progression</span>
+                            <span class="text-green-500 font-semibold">25%</span>
+                        </div>
+                        <div class="h-2 bg-gray-200 rounded-full">
+                            <div class="h-2 bg-green-500 rounded-full progress-bar" style="width: 25%"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Stats -->
+                    <div class="grid grid-cols-3 gap-4 mb-4 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-gray-800">50k€</div>
+                            <div class="text-sm text-gray-500">Objectif</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-green-500">12.5k€</div>
+                            <div class="text-sm text-gray-500">Collectés</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-blue-500">243</div>
+                            <div class="text-sm text-gray-500">Donateurs</div>
+                        </div>
+                    </div>
+                    
+                    <button onclick="showContributionModal(3)" class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition-colors">
+                        Contribuer
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Impact Section -->
+        <section class="bg-white rounded-lg shadow-sm p-8 mb-12">
+            <h2 class="text-2xl font-montserrat text-gray-800 mb-6">Impact collectif</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-green-500 mb-2">27.3k€</div>
+                    <p class="text-gray-600">Fonds collectés</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-blue-500 mb-2">454</div>
+                    <p class="text-gray-600">Contributeurs</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-yellow-500 mb-2">3</div>
+                    <p class="text-gray-600">Projets en cours</p>
+                </div>
+                <div class="text-center">
+                    <div class="text-4xl font-bold text-purple-500 mb-2">2</div>
+                    <p class="text-gray-600">Projets réalisés</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Contribution Modal -->
+    <div id="contributionModal" class="fixed inset-0 bg-black bg-opacity-50 hidden flex items-center justify-center">
+        <div class="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+            <h3 class="text-2xl font-montserrat mb-4">Contribuer au projet</h3>
+            <div class="mb-6">
+                <label class="block text-gray-700 mb-2">Montant de la contribution (€)</label>
+                <input type="number" class="w-full p-2 border rounded focus:ring-2 focus:ring-green-500 focus:border-green-500" id="contributionAmount">
+            </div>
+            <div class="flex justify-end space-x-4">
+                <button onclick="hideContributionModal()" class="px-4 py-2 text-gray-600 hover:text-gray-800">
+                    Annuler
+                </button>
+                <button onclick="processContribution()" class="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600">
+                    Confirmer
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showContributionModal(projectId) {
+            document.getElementById('contributionModal').classList.remove('hidden');
+        }
+
+        function hideContributionModal() {
+            document.getElementById('contributionModal').classList.add('hidden');
+        }
+
+        function processContribution() {
+            const amount = document.getElementById('contributionAmount').value;
+            // Here you would typically process the payment
+            alert(`Merci pour votre contribution de ${amount}€ !`);
+            hideContributionModal();
+        }
+
+        // Close modal when clicking outside
+        document.getElementById('contributionModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                hideContributionModal();
+            }
+        });
+    </script>
+</body>
+</html>

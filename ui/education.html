@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ÉDUCATION - TEIMIX</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <style>
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        .font-opensans { font-family: 'Open Sans', sans-serif; }
+        
+        .quote-card {
+            background-image: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+        }
+        
+        .quiz-option:hover {
+            transform: translateY(-2px);
+            transition: transform 0.2s ease;
+        }
+        
+        .quiz-option.selected {
+            border-color: #10B981;
+            background-color: #D1FAE5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-opensans">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex items-center">
+                    <i class="fas fa-solar-panel text-2xl text-green-500 mr-2"></i>
+                    <span class="font-montserrat text-xl text-gray-800">TEIMIX</span>
+                </div>
+
+                <nav class="hidden md:flex space-x-6">
+                    <a href="dashboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-home mr-2"></i>
+                        Accueil
+                    </a>
+                    <a href="monitoring.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Données
+                    </a>
+                    <a href="human.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-users mr-2"></i>
+                        HUMAN
+                    </a>
+                    <a href="crowdfunding.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-hand-holding-heart mr-2"></i>
+                        PANIER
+                    </a>
+                    <a href="education.html" class="text-green-500 flex items-center px-3 py-2 rounded-lg bg-green-50">
+                        <i class="fas fa-graduation-cap mr-2"></i>
+                        ÉDUCATION
+                    </a>
+                    <a href="leaderboard.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-trophy mr-2"></i>
+                        CLASSEMENT
+                    </a>
+                    <a href="alerts.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-bell mr-2"></i>
+                        Alertes
+                    </a>
+                    <a href="settings.html" class="text-gray-600 hover:text-green-500 flex items-center px-3 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-cog mr-2"></i>
+                        Paramètres
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Quote of the Day -->
+        <div class="quote-card rounded-lg shadow-sm p-8 mb-12 text-center">
+            <i class="fas fa-quote-left text-4xl text-white mb-4"></i>
+            <blockquote class="text-2xl font-montserrat text-white mb-4" id="daily-quote">
+                "La terre ne nous appartient pas, nous l'empruntons à nos enfants."
+            </blockquote>
+            <cite class="text-white">— Antoine de Saint-Exupéry</cite>
+        </div>
+
+        <!-- Quiz Section -->
+        <section class="mb-12">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-montserrat text-gray-800">Quiz du jour</h2>
+                <div class="text-green-500">
+                    <i class="fas fa-star mr-1"></i>
+                    <span id="quiz-points">0</span> points
+                </div>
+            </div>
+
+            <div class="bg-white rounded-lg shadow-sm p-8" id="quiz-container">
+                <h3 class="text-xl font-semibold mb-4" id="quiz-question">Quelle est la principale source d'énergie renouvelable en France ?</h3>
+                
+                <div class="space-y-4" id="quiz-options">
+                    <div class="quiz-option p-4 border rounded-lg cursor-pointer hover:bg-green-50">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 border-2 rounded-full mr-4 flex items-center justify-center option-circle"></div>
+                            <span>L'énergie hydraulique</span>
+                        </div>
+                    </div>
+                    <div class="quiz-option p-4 border rounded-lg cursor-pointer hover:bg-green-50">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 border-2 rounded-full mr-4 flex items-center justify-center option-circle"></div>
+                            <span>L'énergie solaire</span>
+                        </div>
+                    </div>
+                    <div class="quiz-option p-4 border rounded-lg cursor-pointer hover:bg-green-50">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 border-2 rounded-full mr-4 flex items-center justify-center option-circle"></div>
+                            <span>L'énergie éolienne</span>
+                        </div>
+                    </div>
+                    <div class="quiz-option p-4 border rounded-lg cursor-pointer hover:bg-green-50">
+                        <div class="flex items-center">
+                            <div class="w-6 h-6 border-2 rounded-full mr-4 flex items-center justify-center option-circle"></div>
+                            <span>La biomasse</span>
+                        </div>
+                    </div>
+                </div>
+
+                <form id="quiz-form" class="mt-12" onsubmit="return false;">
+                    <div class="border-t border-gray-200 mb-8"></div>
+                    <div class="sticky bottom-4 max-w-md mx-auto px-4">
+                        <button type="submit"
+                                id="submit-quiz-btn"
+                                class="w-full bg-green-500 text-white py-4 px-6 rounded-lg text-xl font-bold text-center shadow-lg hover:bg-green-600 active:bg-green-700 transition-colors focus:outline-none focus:ring-4 focus:ring-green-300">
+                            <i class="fas fa-check-circle text-xl align-middle"></i>
+                            <span class="ml-2">Valider ma réponse</span>
+                        </button>
+                    </div>
+                </form>
+
+                <script>
+                    // Initialize quiz
+                    document.addEventListener('DOMContentLoaded', function() {
+                        console.log('Quiz initialization started');
+                        
+                        const quizForm = document.getElementById('quiz-form');
+                        const submitButton = document.getElementById('submit-quiz-btn');
+                        
+                        if (quizForm && submitButton) {
+                            // Form submit handler
+                            quizForm.addEventListener('submit', function(e) {
+                                console.log('Form submitted');
+                                e.preventDefault();
+                                
+                                // Visual feedback
+                                submitButton.classList.add('bg-green-600', 'scale-95');
+                                setTimeout(() => {
+                                    submitButton.classList.remove('bg-green-600', 'scale-95');
+                                }, 200);
+                                
+                                // Submit quiz
+                                console.log('Selected option before submit:', selectedOption);
+                                submitQuiz();
+                            });
+                            
+                            // Keyboard navigation
+                            document.addEventListener('keydown', function(e) {
+                                if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                                    console.log('Submit shortcut triggered');
+                                    submitButton.click();
+                                }
+                            });
+                            
+                            console.log('Quiz form handlers attached');
+                        }
+                    });
+                </script>
+
+                <div id="quiz-feedback" class="mt-4 p-4 rounded-lg hidden"></div>
+            </div>
+        </section>
+
+        <!-- Educational Content -->
+        <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- Climate Module -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-blue-400 to-blue-600 flex items-center justify-center">
+                    <i class="fas fa-cloud-sun text-6xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Comprendre le climat</h3>
+                    <p class="text-gray-600 mb-4">Découvrez les mécanismes du changement climatique et ses impacts.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">12 leçons</span>
+                        <button class="text-green-500 hover:text-green-600">
+                            Commencer <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Biodiversity Module -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-green-400 to-green-600 flex items-center justify-center">
+                    <i class="fas fa-leaf text-6xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Biodiversité</h3>
+                    <p class="text-gray-600 mb-4">Explorez la richesse de la vie sur Terre et l'importance de sa préservation.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">8 leçons</span>
+                        <button class="text-green-500 hover:text-green-600">
+                            Commencer <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Circular Economy Module -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <div class="h-48 bg-gradient-to-r from-yellow-400 to-yellow-600 flex items-center justify-center">
+                    <i class="fas fa-recycle text-6xl text-white"></i>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-montserrat text-xl mb-2">Économie circulaire</h3>
+                    <p class="text-gray-600 mb-4">Apprenez les principes d'une économie durable et responsable.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm text-gray-500">10 leçons</span>
+                        <button class="text-green-500 hover:text-green-600">
+                            Commencer <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Global variables
+        let selectedOption = null;
+        let points = parseInt(localStorage.getItem('quizPoints')) || 0;
+
+        // Quiz option selection
+        function selectOption(index) {
+            console.log('Selecting option:', index);
+            selectedOption = index;
+            document.querySelectorAll('.quiz-option').forEach((option, i) => {
+                if (i === index) {
+                    option.classList.add('selected', 'bg-green-50', 'border-green-500');
+                    option.querySelector('.option-circle').innerHTML = '<div class="w-3 h-3 bg-green-500 rounded-full"></div>';
+                } else {
+                    option.classList.remove('selected', 'bg-green-50', 'border-green-500');
+                    option.querySelector('.option-circle').innerHTML = '';
+                }
+            });
+        }
+
+        // Quiz submission
+        function submitQuiz() {
+            try {
+                console.log('Submit function called');
+                console.log('Selected option:', selectedOption);
+                console.log('Current points:', points);
+                
+                if (selectedOption === null) {
+                    console.log('No option selected');
+                    alert('Veuillez sélectionner une réponse');
+                    return;
+                }
+
+                const feedback = document.getElementById('quiz-feedback');
+                if (!feedback) {
+                    console.error('Feedback element not found');
+                    return;
+                }
+
+                if (selectedOption === 0) { // Correct answer
+                    console.log('Correct answer!');
+                    points += 10;
+                    localStorage.setItem('quizPoints', points);
+                    document.getElementById('quiz-points').textContent = points;
+                    
+                    feedback.classList.remove('hidden', 'bg-red-100', 'text-red-700');
+                    feedback.classList.add('bg-green-100', 'text-green-700', 'p-4', 'rounded-lg', 'mt-4');
+                    feedback.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas fa-check-circle text-green-500 mr-2 text-xl"></i>
+                            <div>
+                                <div class="font-semibold">Correct !</div>
+                                <div class="text-sm">L'hydroélectricité est la première source d'énergie renouvelable en France.</div>
+                                <div class="mt-2 text-sm font-semibold text-green-600">+10 points</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    console.log('Incorrect answer');
+                    feedback.classList.remove('hidden', 'bg-green-100', 'text-green-700');
+                    feedback.classList.add('bg-red-100', 'text-red-700', 'p-4', 'rounded-lg', 'mt-4');
+                    feedback.innerHTML = `
+                        <div class="flex items-center">
+                            <i class="fas fa-times-circle text-red-500 mr-2 text-xl"></i>
+                            <div>
+                                <div class="font-semibold">Incorrect</div>
+                                <div class="text-sm">L'hydroélectricité est la première source d'énergie renouvelable en France.</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                feedback.classList.remove('hidden');
+
+                // Disable all options after submission
+                document.querySelectorAll('.quiz-option').forEach(option => {
+                    option.style.pointerEvents = 'none';
+                    option.classList.add('opacity-50');
+                });
+
+                // Disable submit button
+                const submitButton = document.getElementById('submit-quiz-btn');
+                if (submitButton) {
+                    submitButton.disabled = true;
+                    submitButton.classList.add('opacity-50', 'cursor-not-allowed');
+                }
+
+                console.log('Quiz submission completed successfully');
+            } catch (error) {
+                console.error('Error in quiz submission:', error);
+                alert('Une erreur est survenue lors de la soumission du quiz.');
+            }
+        }
+
+        // Daily quote rotation
+        const quotes = [
+            {
+                text: "La terre ne nous appartient pas, nous l'empruntons à nos enfants.",
+                author: "Antoine de Saint-Exupéry"
+            },
+            {
+                text: "Nous n'héritons pas de la terre de nos ancêtres, nous l'empruntons à nos enfants.",
+                author: "Proverbe amérindien"
+            },
+            {
+                text: "Il n'y a pas de passagers sur le vaisseau Terre. Nous sommes tous des membres de l'équipage.",
+                author: "Marshall McLuhan"
+            }
+        ];
+
+        function updateQuote() {
+            const index = Math.floor(Math.random() * quotes.length);
+            document.getElementById('daily-quote').textContent = `"${quotes[index].text}"`;
+            document.querySelector('cite').textContent = `— ${quotes[index].author}`;
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM fully loaded');
+
+            // Initialize points display
+            document.getElementById('quiz-points').textContent = points;
+
+            // Add click listeners to quiz options
+            document.querySelectorAll('.quiz-option').forEach((option, index) => {
+                option.addEventListener('click', () => {
+                    console.log('Option clicked:', index);
+                    selectOption(index);
+                });
+            });
+
+            // Log initialization complete
+            console.log('Quiz initialization complete');
+
+            // Update quote if needed
+            const lastQuoteDate = localStorage.getItem('lastQuoteDate');
+            const today = new Date().toDateString();
+            if (lastQuoteDate !== today) {
+                updateQuote();
+                localStorage.setItem('lastQuoteDate', today);
+            }
+        });
+    </script>
+</body>
+</html>
