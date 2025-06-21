@@ -14,7 +14,7 @@ TEIMIX est une application web de monitoring énergétique qui permet de suivre 
 
 1. Cloner le repository
 ```bash
-git clone https://github.com/Eric-Kambire/OPTIMIX.git
+git clone https://github.com/Eric-Kambire/TEIMIX.git
 cd TEIMIX
 ```
 
