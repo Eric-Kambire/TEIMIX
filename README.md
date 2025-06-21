@@ -1,6 +1,6 @@
-# OPTIMIX - Système de Monitoring Énergétique
+# TEIMIX - Système de Monitoring Énergétique
 
-OPTIMIX est une application web de monitoring énergétique qui permet de suivre en temps réel la consommation d'énergie, la production solaire, et d'autres métriques importantes.
+TEIMIX est une application web de monitoring énergétique qui permet de suivre en temps réel la consommation d'énergie, la production solaire, et d'autres métriques importantes.
 
 ## Fonctionnalités
 
@@ -15,7 +15,7 @@ OPTIMIX est une application web de monitoring énergétique qui permet de suivre
 1. Cloner le repository
 ```bash
 git clone https://github.com/Eric-Kambire/OPTIMIX.git
-cd OPTIMIX
+cd TEIMIX
 ```
 
 2. Installer les dépendances Python
