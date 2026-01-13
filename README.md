@@ -52,10 +52,10 @@ L'application expose plusieurs endpoints API :
 
 ## Déploiement
 
-L'application est déployée sur GitHub Pages à l'adresse : https://eric-kambire.github.io/OPTIMIX/
+L'application est déployée sur GitHub Pages à l'adresse : https://eric-kambire.github.io/TEIMIX/
 
 Pour accéder à l'application :
-1. Visiter https://eric-kambire.github.io/OPTIMIX/
+1. Visiter https://eric-kambire.github.io/TEIMIX/
 2. Naviguer à travers les différentes sections via le menu de navigation
 3. Consulter les données en temps réel dans le tableau de bord
 
